@@ -86,7 +86,7 @@ void	ft_parsing(int fd, t_mlx *mlx)
 		tmp = str;
 		str = ft_strjoin_gnl(tmp, buf);
 		while (str[++i])
-			if (ft_isalnum(str[i]) != 1 && str[i] != ' ' && str[i] != '\n' && str[i] != '-' && str[i] != '+')
+			if (ft_isalnum(str[i]) != 1 && str[i] != ' ' && str[i] != '\n' && str[i] != '-'&& str[i] != '\t' && str[i] != ',' && str[i] != '+')
 				ft_error();
 	}
 	if (ret <= -1 || str == NULL)

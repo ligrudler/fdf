@@ -29,16 +29,16 @@ void	print_grid(t_mlx *mlx)
 		while (x < mlx->nbcol)
 		{
 			mlx->bres.x1 = x * mlx->scale + mlx->xoff;
-			mlx->bres.y1 = (y - (mlx->tab[y][x] * mlx->alt)) * mlx->scale + mlx->yoff; 
+			mlx->bres.y1 = (y - (mlx->tab[y][x] * mlx->alt)) * mlx->scale + mlx->yoff;
 			if (y - 1 >= 0)
 			{
 				mlx->bres.x2 = x * mlx->scale + mlx->xoff;
-				mlx->bres.y2 = (y - 1 - (mlx->tab[y- 1][x] * mlx->alt)) * mlx->scale + mlx->yoff; 
+				mlx->bres.y2 = (y - 1 - (mlx->tab[y- 1][x] * mlx->alt)) * mlx->scale + mlx->yoff;
 				mlx->bres.err = 0;
 				ft_bresenham(mlx); 
 			}
 			mlx->bres.x1 = x * mlx->scale + mlx->xoff;
-			mlx->bres.y1 = (y - (mlx->tab[y][x] * mlx->alt)) * mlx->scale + mlx->yoff; 
+			mlx->bres.y1 = (y - (mlx->tab[y][x] * mlx->alt)) * mlx->scale + mlx->yoff;
 			if (x - 1 >= 0)
 			{
 				mlx->bres.x2 = (x - 1) * mlx->scale + mlx->xoff;

@@ -20,6 +20,8 @@ WHITE= \033[0m
 GREEN= \033[32m
 CYAN= \033[36m
 BLUE= \033[34m
+YELLOW= \033[33m
+MAGENTA= \033[35m
 
 ################################################################################
 #								Macros										   #
@@ -62,15 +64,15 @@ $(NAME): $(OBJ)
 	@ echo "$(GREEN)[✔]$(WHITE)$@"
 
 clean:
-	@ echo "Cleaning libft"
+	@ echo "$(YELLOW)Cleaning libft$(WHITE)"
 	@ make -C libft fclean
-	@ echo "Objects deleted"
+	@ echo "$(YELLOW)Objects deleted$(WHITE)"
 	@ rm -rf $(OBJ)
 
 fclean: clean
-	@ echo "Deep cleaning libft"
+	@ echo "$(MAGENTA)Deep cleaning libft$(WHITE)"
 	@ make -C libft fclean
-	@ echo "Executable deleted"
+	@ echo "$(MAGENTA)Executable deleted$(WHITE)"
 	@ rm -rf $(NAME)
 
 re: fclean all
