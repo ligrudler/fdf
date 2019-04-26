@@ -12,6 +12,25 @@
 
 #include "../hdr/fdf.h"
 
+void	find_scale(t_mlx *mlx)
+{
+	int	big;
+
+	big = (mlx->nbcol > mlx->nblin) ? mlx->nbcol : mlx->nblin;
+	if (big >= 0 && big <= 20)
+		mlx->scale = 50;
+	else if (big > 20 && big <= 50)
+		mlx->scale = 20;
+	else
+		mlx->scale = 5;
+}
+
+void	find_offset(t_mlx *mlx)
+{
+	mlx->xoff = (WINX / 2) - ((mlx->nbcol/2) * mlx->scale);
+	mlx->yoff = (WINY / 2) - ((mlx->nblin/2) * mlx->scale);
+}
+
 void	init_var(t_mlx *mlx)
 {
 	mlx->nblin = 0;
@@ -19,6 +38,9 @@ void	init_var(t_mlx *mlx)
 	mlx->bres.err = 0;
     mlx->alt = 0;
     ft_bzero(mlx->keyboard, 256);
+	mlx->xoff = 0;
+	mlx->yoff = 0;
+	mlx->scale = 10;
 }
 
 void    init_img(t_mlx *mlx)
@@ -30,5 +52,4 @@ void    init_img(t_mlx *mlx)
 	if ((mlx->img = mlx_new_image(mlx->mlx_ptr, WINX, WINY)) == NULL)
 		ft_error();
 	mlx->canvas = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->size_line, &mlx->endian);
-
 }

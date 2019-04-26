@@ -20,6 +20,8 @@
 
 void    init_img(t_mlx *mlx);
 void	init_var(t_mlx *mlx);
+void	find_scale(t_mlx *mlx);
+void	find_offset(t_mlx *mlx);
 
 /*
 **  Draw

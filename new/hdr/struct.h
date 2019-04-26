@@ -33,12 +33,15 @@ typedef struct	s_mlx
 // Pour la mlx
 	void		*mlx_ptr;
 	void		*win_ptr;
+// Pour l'image
 	void		*img;
 	char		*canvas;
 	int			bpp;
 	int			size_line;
 	int			endian;
-
+	int			scale;
+	int			xoff;
+	int			yoff;
 // Pour Bresenham
 	t_bress		bres;
 	double		alt;
