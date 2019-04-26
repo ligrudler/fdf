@@ -1,4 +1,4 @@
-#include "fdf.h"
+#include "../hdr/fdf.h"
 
 void		check_col_lin(t_mlx *mlx, char *str)
 {

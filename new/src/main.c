@@ -1,6 +1,6 @@
-#include "fdf.h"
+#include "../hdr/fdf.h"
 
-void	print_dtab(t_mlx *mlx)
+void	print_tab(t_mlx *mlx)
 {
 	int i;
 	int j;
@@ -34,7 +34,7 @@ int		main(int argc, char **argv)
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		return (-1);
 	ft_parsing(fd, &mlx);
-	print_dtab(&mlx);
+	print_tab(&mlx);
 	ft_mlx(mlx);
 	close(fd);
 	return (0);
