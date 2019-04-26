@@ -1,10 +1,23 @@
 #include "fdf.h"
 
-void	init_var(t_mlx *mlx)
+void	print_dtab(t_mlx *mlx)
 {
-	mlx->nblin = 0;
-	mlx->color = 0x00000080;
-	mlx->err = 0;
+	int i;
+	int j;
+
+	j = 0;
+	while (j < mlx->nblin)
+	{
+		i = 0;
+		while (i < mlx->nbcol)
+		{
+			ft_putnbr(mlx->tab[j][i]);
+			ft_putchar(' ');
+			i++;
+		}
+		ft_putchar('\n');
+		j++;
+	}
 }
 
 int		main(int argc, char **argv)
@@ -21,5 +34,8 @@ int		main(int argc, char **argv)
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		return (-1);
 	ft_parsing(fd, &mlx);
+	print_dtab(&mlx);
 	ft_mlx(mlx);
+	close(fd);
+	return (0);
 }

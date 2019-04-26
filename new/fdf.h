@@ -3,11 +3,22 @@
 
 # include "mlx.h"
 # include "libft/libft.h"
+# include "keycode.h"
 
 # define WINX 1920
 # define WINY 1080
 
 # define IMGX 
+
+typedef struct	s_bress
+{
+	int			err;
+	int			x1;
+	int			x2;
+	int			y1;
+	int			y2;
+}				t_bress;
+
 typedef struct	s_mlx
 {
 // Pour le parsing
@@ -24,17 +35,20 @@ typedef struct	s_mlx
 	int			endian;
 
 // Pour Bresenham
-	int			err;
-	int			x1;
-	int			x2;
-	int			y1;
-	int			y2;
-
+	t_bress		bres;
+	double		alt;
 // Autre
 	int			color;
+	int			keyboard[256];
 
 }				t_mlx;
 
+/*
+** Proto
+*/
+
+void    init_img(t_mlx *mlx);
+void	init_var(t_mlx *mlx);
 void		ft_parsing(int fd, t_mlx *mlx);
 void		check_col_lin(t_mlx *mlx, char *str);
 void		create_double_tab(t_mlx *mlx);

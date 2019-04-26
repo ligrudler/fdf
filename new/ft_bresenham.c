@@ -12,6 +12,15 @@
 
 #include "fdf.h"
 
+
+int is_inside_win(t_mlx mlx)
+{
+	if (mlx.bres.x1 <= 0 || mlx.bres.x1 >= WINX 
+	 || mlx.bres.y1 <= 0 || mlx.bres.y1 >= WINY)
+	 	return (0);
+	return (1);
+}
+
 int		ft_bresenham(t_mlx *mlx)
 {
 	int dx;
@@ -20,29 +29,30 @@ int		ft_bresenham(t_mlx *mlx)
 	int sy;
 	int e2;
 
-	dx = ft_abs(mlx->x2 - mlx->x1);
-	sx = mlx->x1 < mlx->x2 ? 1 : -1;
-	dy = ft_abs(mlx->y2 - mlx->y1);
-	sy = mlx->y1 < mlx->y2 ? 1 : -1;
+	dx = ft_abs(mlx->bres.x2 - mlx->bres.x1);
+	sx = mlx->bres.x1 < mlx->bres.x2 ? 1 : -1;
+	dy = ft_abs(mlx->bres.y2 - mlx->bres.y1);
+	sy = mlx->bres.y1 < mlx->bres.y2 ? 1 : -1;
 	if (dx > dy)
-		mlx->err = dx / 2;
+		mlx->bres.err = dx / 2;
 	else if (dx < dy)
-		mlx->err = -dy / 2;
+		mlx->bres.err = -dy / 2;
 	while (1)
 	{
-		put_pixel(mlx);
-		if (mlx->x1 == mlx->x2 && mlx->y1 == mlx->y2)
+		if (is_inside_win(*mlx))
+			put_pixel(mlx);
+		if (mlx->bres.x1 == mlx->bres.x2 && mlx->bres.y1 == mlx->bres.y2)
 			return (0);
-		e2 = mlx->err;
+		e2 = mlx->bres.err;
 		if (e2 > -dx)
 		{
-			mlx->err -= dy;
-			mlx->x1 += sx;
+			mlx->bres.err -= dy;
+			mlx->bres.x1 += sx;
 		}
 		if (e2 < dy)
 		{
-			mlx->err += dx;
-			mlx->y1 += sy;
+			mlx->bres.err += dx;
+			mlx->bres.y1 += sy;
 		}
 	}
 }
