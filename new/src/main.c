@@ -36,7 +36,6 @@ int		main(int argc, char **argv)
 	ft_parsing(fd, &mlx);
 	print_tab(&mlx);
 	find_scale(&mlx);
-	find_offset(&mlx);
 	ft_mlx(mlx);
 	close(fd);
 	return (0);

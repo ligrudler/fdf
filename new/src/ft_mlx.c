@@ -14,9 +14,17 @@ int deal_key(void *param)
     if (pmlx->keyboard[KEY_PAD_SUB])
 		pmlx->alt -= 0.1;
     if (pmlx->keyboard[KEY_PAD_ADD])
-	{
 		pmlx->alt += 0.1;
-	}
+    if (pmlx->keyboard[KEY_UP])
+        pmlx->scale += 1;
+    if (pmlx->keyboard[KEY_DOWN] && pmlx->scale > 0)
+        pmlx->scale -= 1;
+    if (pmlx->keyboard[KEY_SPACEBAR])
+    {
+        find_scale(pmlx);
+        pmlx->alt = 0;
+    }
+	find_offset(pmlx);
     ft_bzero(pmlx->canvas, 4 * WINX * WINY);
 	print_grid(pmlx);
 	mlx_put_image_to_window(pmlx->mlx_ptr, pmlx->win_ptr, pmlx->img, 0, 0);
