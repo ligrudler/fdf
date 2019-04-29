@@ -21,12 +21,21 @@
 void    init_img(t_mlx *mlx);
 void	init_var(t_mlx *mlx);
 void	find_scale(t_mlx *mlx);
+
+/*
+**
+*/
+
 void	find_offset(t_mlx *mlx);
+void	find_offset_para(t_mlx *mlx);
+void	find_offset_iso(t_mlx *mlx);
 
 /*
 **  Draw
 */
 
+void	print_grid_iso(t_mlx *mlx);
+void	print_grid_para(t_mlx *mlx);
 void	print_grid(t_mlx *mlx);
 void	put_pixel(t_mlx *mlx);
 

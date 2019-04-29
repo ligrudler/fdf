@@ -29,6 +29,7 @@ int		ft_bresenham(t_mlx *mlx)
 	int sy;
 	int e2;
 
+	mlx->bres.err = 0;
 	dx = ft_abs(mlx->bres.x2 - mlx->bres.x1);
 	sx = mlx->bres.x1 < mlx->bres.x2 ? 1 : -1;
 	dy = ft_abs(mlx->bres.y2 - mlx->bres.y1);

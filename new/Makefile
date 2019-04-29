@@ -29,19 +29,21 @@ MAGENTA= \033[35m
 NAME= fdf
 CC= gcc
 CFLAGS= -Wall -Wextra -Werror
-SRC_DIR= ./src
 FRAMEWORK=  -framework OpenGL -framework AppKit
+SRC_DIR= src/
 SRC= main.c\
 	 init.c\
 	 draw.c\
 	 ft_parsing.c\
 	 ft_mlx.c\
 	 ft_bresenham.c\
-	 key_handler.c
-OBJ= $(SRC:.c=.o)
+	 key_handler.c\
+	 find_offset.c
+SRCS= $(addprefix $(SRC_DIR),$(SRC))
+OBJ_DIR= obj/
+OBJ= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 LIB= -L /usr/local/lib -lmlx\
 	 -L libft -lft
-VPATH= ./src
 
 ###############################################################################
 #								Rules										  #
@@ -50,29 +52,35 @@ VPATH= ./src
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@ echo "Creating $(BLUE)libft$(WHITE)"
+	@ echo "$(BLUE)Creating libft$(WHITE)"
 	@ make -C libft
-	@ echo "$(GREEN)Libft$(WHITE) created"
-	@ echo "Creating $(BLUE)$@$(WHITE) executable"
+	@ echo "$(GREEN)Libft created$(WHITE)"
+	@ echo "$(YELLOW)Creating $@ executable$(WHITE)"
 	@ $(CC) -o $@ $(CFLAGS) $(OBJ) $(LIB) $(FRAMEWORK)
-	@echo "$(GREEN)$@$(WHITE) executable created"
-	@ echo "$(GREEN)DONE$(WHITE)"
+	@echo "$(GREEN)$@ executable created$(WHITE)"
 
+obj:
+	@mkdir obj
 
-%.o: %.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c |obj
 	@ $(CC) -o $@ -c $< $(CFLAGS)
 	@ echo "$(GREEN)[✔]$(WHITE)$@"
 
 clean:
-	@ echo "$(YELLOW)Cleaning libft$(WHITE)"
-	@ make -C libft fclean
-	@ echo "$(YELLOW)Objects deleted$(WHITE)"
+	@ echo "$(YELLOW)Deleting objects$(WHITE)"
+	@ for i in $(OBJ); do \
+		echo "$(RED)-Deleting $$i$(WHITE)"; \
+	done;
+	@ echo "$(GREEN)Objects deleted$(WHITE)"
 	@ rm -rf $(OBJ)
 
 fclean: clean
-	@ echo "$(MAGENTA)Deep cleaning libft$(WHITE)"
+	@ echo "$(BLUE)Cleaning libft$(WHITE)"
 	@ make -C libft fclean
-	@ echo "$(MAGENTA)Executable deleted$(WHITE)"
+	@ echo "$(YELLOW)Deleting obj directory$(WHITE)"
+	@ rm -rf obj
+	@ echo "$(GREEN)Obj directory deleted$(WHITE)"
+	@ echo "$(GREEN)Executable deleted$(WHITE)"
 	@ rm -rf $(NAME)
 
 re: fclean all

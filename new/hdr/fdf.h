@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include <mlx.h>
+# include <math.h>
 # include "../libft/libft.h"
 # include "keycode.h"
 # include "struct.h"

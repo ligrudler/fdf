@@ -48,6 +48,7 @@ typedef struct	s_mlx
 // Autre
 	int			color;
 	int			keyboard[256];
+	int		iso;
 
 }				t_mlx;
 

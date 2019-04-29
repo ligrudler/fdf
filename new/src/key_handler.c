@@ -26,6 +26,7 @@ int key_release(int key, void *param)
     t_mlx *pmlx;
 
     pmlx = (t_mlx *)param;
-    pmlx->keyboard[key] = 0;
+    if (key != KEY_P)
+         pmlx->keyboard[key] = 0;
     return (0);
-}
+}  

@@ -25,12 +25,6 @@ void	find_scale(t_mlx *mlx)
 		mlx->scale = 5;
 }
 
-void	find_offset(t_mlx *mlx)
-{
-	mlx->xoff = (WINX / 2) - ((mlx->nbcol/2) * mlx->scale);
-	mlx->yoff = (WINY / 2) - ((mlx->nblin/2) * mlx->scale);
-}
-
 void	init_var(t_mlx *mlx)
 {
 	mlx->nblin = 0;
