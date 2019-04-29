@@ -68,6 +68,7 @@ void		stock_in_tab(char *str, t_mlx *mlx)
 		}
 		lin++;
 	}
+	ft_free_split(split);
 }
 
 void	ft_parsing(int fd, t_mlx *mlx)
@@ -85,6 +86,7 @@ void	ft_parsing(int fd, t_mlx *mlx)
 		buf[ret] = '\0';
 		tmp = str;
 		str = ft_strjoin_gnl(tmp, buf);
+		free(tmp);
 		while (str[++i])
 			if (ft_isalnum(str[i]) != 1 && str[i] != ' ' && str[i] != '\n' && str[i] != '-'&& str[i] != '\t' && str[i] != ',' && str[i] != '+')
 				ft_error();
@@ -94,4 +96,5 @@ void	ft_parsing(int fd, t_mlx *mlx)
 	check_col_lin(mlx, str);
 	create_double_tab(mlx);
 	stock_in_tab(str, mlx);
+	free(str);
 }

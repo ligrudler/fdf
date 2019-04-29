@@ -63,6 +63,14 @@ void	stock_in_tab(char *str, t_mlx *mlx);
 int		ft_mlx(t_mlx mlx);
 int		ft_bresenham(t_mlx *mlx);
 
+
+/*
+** Free
+*/
+
+void    ft_free_split(char **split);
+void    ft_free_tab(t_mlx *mlx);
+
 /*
 **  Misc
 */
