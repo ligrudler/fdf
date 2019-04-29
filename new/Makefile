@@ -39,7 +39,8 @@ SRC= main.c\
 	 ft_bresenham.c\
 	 key_handler.c\
 	 find_offset.c\
-	 free.c
+	 free.c \
+	 color.c
 SRCS= $(addprefix $(SRC_DIR),$(SRC))
 OBJ_DIR= obj/
 OBJ= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))

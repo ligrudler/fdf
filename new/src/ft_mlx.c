@@ -9,7 +9,7 @@ int deal_key(void *param)
     {
         mlx_destroy_image(pmlx->mlx_ptr, pmlx->img);
         mlx_destroy_window(pmlx->mlx_ptr, pmlx->win_ptr);
-        ft_free_tab(pmlx);
+        ft_free_map(pmlx);
         exit(0);
     }
     if (pmlx->keyboard[KEY_PAD_SUB])

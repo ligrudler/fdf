@@ -1,5 +1,5 @@
 #include "../hdr/fdf.h"
-
+# include "stdio.h"
 void		check_col_lin(t_mlx *mlx, char *str)
 {
 	int i;
@@ -34,11 +34,11 @@ void		create_double_tab(t_mlx *mlx)
 {
 	int i;
 	
-	if (!(mlx->tab = (int**)malloc(sizeof(int*) * mlx->nblin)))
+	if (!(mlx->map = (t_map**)malloc(sizeof(t_map*) * mlx->nblin)))
 		ft_error();
 	i = 0;
 	while ( i < mlx->nblin)
-		if (!(mlx->tab[i++] = (int*)malloc(sizeof(**mlx->tab) * mlx->nbcol)))
+		if (!(mlx->map[i++] = (t_map*)malloc(sizeof(t_map) * mlx->nbcol)))
 			ft_error();
 }
 
@@ -62,7 +62,12 @@ void		stock_in_tab(char *str, t_mlx *mlx)
 		{
 			if (ft_atol(split[i]) != ft_atoi(split[i]))
 				ft_error();
-			mlx->tab[lin][col] = ft_atoi(split[i]);
+			mlx->map[lin][col].z = ft_atoi(split[i]);
+			printf("z:%d\n", mlx->map[lin][col].z);
+			if (ft_strchr(split[i], ','))
+				ft_stock_color(mlx, ft_strchr(split[i], ',') + 1, col, lin);
+			else
+				mlx->map[lin][col].color = mlx->color;
 			col++;
 			i++;
 		}

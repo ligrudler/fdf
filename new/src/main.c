@@ -11,7 +11,7 @@ void	print_tab(t_mlx *mlx)
 		i = 0;
 		while (i < mlx->nbcol)
 		{
-			ft_putnbr(mlx->tab[j][i]);
+			ft_putnbr(mlx->map[j][i].z);
 			ft_putchar(' ');
 			i++;
 		}

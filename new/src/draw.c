@@ -14,7 +14,10 @@
 
 void	put_pixel(t_mlx *mlx)
 {
-	*(int *)&mlx->canvas[mlx->bres.y1 * mlx->size_line + (mlx->bres.x1 * 4)] = mlx->color;
+	/*if (mlx->bres.color != 0)
+		*(int *)&mlx->canvas[mlx->bres.y1 * mlx->size_line + (mlx->bres.x1) * 4] = mlx->bres.color;
+	else*/
+		*(int *)&mlx->canvas[mlx->bres.y1 * mlx->size_line + (mlx->bres.x1) * 4] = mlx->color;
 }
 
 void	print_grid_para(t_mlx *mlx)
@@ -29,19 +32,20 @@ void	print_grid_para(t_mlx *mlx)
 		while (x < mlx->nbcol)
 		{
 			mlx->bres.x1 = x * mlx->scale + mlx->xoff;
-			mlx->bres.y1 = (y - (mlx->tab[y][x] * mlx->alt)) * mlx->scale + mlx->yoff;
+			mlx->bres.y1 = (y - (mlx->map[y][x].z * mlx->alt)) * mlx->scale + mlx->yoff;
+			mlx->bres.color = mlx->map[y][x].color;
 			if (y - 1 >= 0)
 			{
 				mlx->bres.x2 = x * mlx->scale + mlx->xoff;
-				mlx->bres.y2 = (y - 1 - (mlx->tab[y- 1][x] * mlx->alt)) * mlx->scale + mlx->yoff;
+				mlx->bres.y2 = (y - 1 - (mlx->map[y- 1][x].z * mlx->alt)) * mlx->scale + mlx->yoff;
 				ft_bresenham(mlx); 
 			}
 			mlx->bres.x1 = x * mlx->scale + mlx->xoff;
-			mlx->bres.y1 = (y - (mlx->tab[y][x] * mlx->alt)) * mlx->scale + mlx->yoff;
+			mlx->bres.y1 = (y - (mlx->map[y][x].z * mlx->alt)) * mlx->scale + mlx->yoff;
 			if (x - 1 >= 0)
 			{
 				mlx->bres.x2 = (x - 1) * mlx->scale + mlx->xoff;
-				mlx->bres.y2 = (y - (mlx->tab[y][x - 1] * mlx->alt)) * mlx->scale + mlx->yoff;
+				mlx->bres.y2 = (y - (mlx->map[y][x - 1].z * mlx->alt)) * mlx->scale + mlx->yoff;
 				ft_bresenham(mlx); 
 			}
 			x++;
@@ -49,8 +53,6 @@ void	print_grid_para(t_mlx *mlx)
 		y++;
 	}
 }
-
-//void	get_iso_coord(int x, int y, int z)
 
 void	print_grid_iso(t_mlx *mlx)
 {
@@ -64,22 +66,22 @@ void	print_grid_iso(t_mlx *mlx)
 		while (x < mlx->nbcol)
 		{
 			mlx->bres.x1 = (x - y) * cos(0.46373398225489) * mlx->scale + mlx->xoff;
-			mlx->bres.y1 = (-(mlx->tab[y][x] * mlx->alt) + (x + y) * sin(0.46373398225489))
+			mlx->bres.y1 = (-(mlx->map[y][x].z * mlx->alt) + (x + y) * sin(0.46373398225489))
 				* mlx->scale + mlx->yoff;
 			if (y - 1 >= 0)
 			{
 				mlx->bres.x2 = (x - (y - 1)) * cos(0.46373398225489) * mlx->scale + mlx->xoff;
-				mlx->bres.y2 = (-(mlx->tab[y - 1][x] * mlx->alt) + (x + (y - 1)) * sin(0.46373398225489))
+				mlx->bres.y2 = (-(mlx->map[y - 1][x].z * mlx->alt) + (x + (y - 1)) * sin(0.46373398225489))
 					* mlx->scale + mlx->yoff;
 				ft_bresenham(mlx); 
 			}
 			mlx->bres.x1 = (x - y) * cos(0.46373398225489) * mlx->scale + mlx->xoff;
-			mlx->bres.y1 = (-(mlx->tab[y][x] * mlx->alt) + (x + y) * sin(0.46373398225489))
+			mlx->bres.y1 = (-(mlx->map[y][x].z * mlx->alt) + (x + y) * sin(0.46373398225489))
 				* mlx->scale + mlx->yoff;
 			if (x - 1 >= 0)
 			{
 				mlx->bres.x2 = ((x - 1) - y) * cos(0.46373398225489) * mlx->scale + mlx->xoff;
-				mlx->bres.y2 = (-(mlx->tab[y][x - 1] * mlx->alt) + (x + (y - 1)) * sin(0.46373398225489))
+				mlx->bres.y2 = (-(mlx->map[y][x - 1].z * mlx->alt) + (x + (y - 1)) * sin(0.46373398225489))
 					* mlx->scale + mlx->yoff;
 				ft_bresenham(mlx); 
 			}

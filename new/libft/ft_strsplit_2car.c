@@ -88,22 +88,3 @@ char			**ft_strsplit_2car(char const *s, t_car car)
 		return (0);
 	return (tab);
 }
-
-/*int	main()
-{
-	char **tab;
-	int i;
-	int j;
-	t_car car;
-	
-	car.z = ' ';
-	car.y = '\n';
-	tab =  ft_strsplit_2car("salu  oj ;lp", car);
-	i = 0;
-	while (tab[i])
-	{
-		printf("%s\n", tab[i]);
-		i++;
-	}
-	return (0);
-}*/

@@ -63,13 +63,19 @@ void	stock_in_tab(char *str, t_mlx *mlx);
 int		ft_mlx(t_mlx mlx);
 int		ft_bresenham(t_mlx *mlx);
 
+/*
+** Color
+*/
+
+void    ft_stock_color(t_mlx *mlx, char *str, int col, int lin);
+
 
 /*
 ** Free
 */
 
 void    ft_free_split(char **split);
-void    ft_free_tab(t_mlx *mlx);
+void    ft_free_map(t_mlx *mlx);
 
 /*
 **  Misc

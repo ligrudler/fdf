@@ -22,14 +22,21 @@ typedef struct	s_bress
 	int			x2;
 	int			y1;
 	int			y2;
+	int 		color;
 }				t_bress;
+
+typedef	struct s_map
+{
+	int		z;
+	int		color;
+}				t_map;
 
 typedef struct	s_mlx
 {
 // Pour le parsing
 	int nblin;
 	int nbcol;
-	int **tab;
+	t_map		**map;
 // Pour la mlx
 	void		*mlx_ptr;
 	void		*win_ptr;

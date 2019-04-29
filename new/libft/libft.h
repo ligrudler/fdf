@@ -107,5 +107,7 @@ char				**ft_strsplit_2car(char const *s, t_car car);
 long int			ft_atol(const char *str);
 int					ft_abs(int nb);
 void				ft_error();
+int					ft_htoi(char *hex);
+
 
 #endif

@@ -83,6 +83,7 @@ SRC = 	ft_atoi.c \
 		ft_atol.c \
 		ft_abs.c \
 		ft_error.c \
+		ft_htoi.c
 
 HDR = ./libft.h
 
