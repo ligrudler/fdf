@@ -63,7 +63,6 @@ void		stock_in_tab(char *str, t_mlx *mlx)
 			if (ft_atol(split[i]) != ft_atoi(split[i]))
 				ft_error();
 			mlx->map[lin][col].z = ft_atoi(split[i]);
-			printf("z:%d\n", mlx->map[lin][col].z);
 			if (ft_strchr(split[i], ','))
 				ft_stock_color(mlx, ft_strchr(split[i], ',') + 1, col, lin);
 			else
