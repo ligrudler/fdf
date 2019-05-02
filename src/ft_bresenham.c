@@ -15,45 +15,38 @@
 
 int is_inside_win(t_mlx mlx)
 {
-	if (mlx.bres.x1 <= 0 || mlx.bres.x1 >= WINX 
-	 || mlx.bres.y1 <= 0 || mlx.bres.y1 >= WINY)
+	if (mlx.bres.cur.x <= 0 || mlx.bres.cur.x >= WINX 
+	 || mlx.bres.cur.y <= 0 || mlx.bres.cur.y >= WINY)
 	 	return (0);
 	return (1);
 }
 
+# include <stdio.h>
 int		ft_bresenham(t_mlx *mlx)
 {
-	int dx;
-	int dy;
-	int sx;
-	int sy;
-	int e2;
-
-	mlx->bres.err = 0;
-	dx = ft_abs(mlx->bres.x2 - mlx->bres.x1);
-	sx = mlx->bres.x1 < mlx->bres.x2 ? 1 : -1;
-	dy = ft_abs(mlx->bres.y2 - mlx->bres.y1);
-	sy = mlx->bres.y1 < mlx->bres.y2 ? 1 : -1;
-	if (dx > dy)
-		mlx->bres.err = dx / 2;
-	else if (dx < dy)
-		mlx->bres.err = -dy / 2;
+	init_bres(mlx);
+		if (mlx->bres.dx > mlx->bres.dy)
+		mlx->bres.err = mlx->bres.dx / 2;
+	else if (mlx->bres.dx < mlx->bres.dy)
+		mlx->bres.err = -(mlx->bres.dy) / 2;
 	while (1)
 	{
+		mlx->bres.cur.color = get_color(mlx->bres.cur, mlx->bres.p1, mlx->bres.p2);
 		if (is_inside_win(*mlx))
 			put_pixel(mlx);
-		if (mlx->bres.x1 == mlx->bres.x2 && mlx->bres.y1 == mlx->bres.y2)
+		if (mlx->bres.cur.x == mlx->bres.p2.x
+			&& mlx->bres.cur.y == mlx->bres.p2.y)
 			return (0);
-		e2 = mlx->bres.err;
-		if (e2 > -dx)
+		mlx->bres.e2 = mlx->bres.err;
+		if (mlx->bres.e2 > -(mlx->bres.dx))
 		{
-			mlx->bres.err -= dy;
-			mlx->bres.x1 += sx;
+			mlx->bres.err -= mlx->bres.dy;
+			mlx->bres.cur.x += mlx->bres.sx;
 		}
-		if (e2 < dy)
+		if (mlx->bres.e2 < mlx->bres.dy)
 		{
-			mlx->bres.err += dx;
-			mlx->bres.y1 += sy;
+			mlx->bres.err += mlx->bres.dx;
+			mlx->bres.cur.y += mlx->bres.sy;
 		}
 	}
 }

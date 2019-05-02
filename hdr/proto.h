@@ -20,6 +20,7 @@
 
 void    init_img(t_mlx *mlx);
 void	init_var(t_mlx *mlx);
+void	init_bres(t_mlx *mlx);
 void	find_scale(t_mlx *mlx);
 
 /*
@@ -67,7 +68,10 @@ int		ft_bresenham(t_mlx *mlx);
 ** Color
 */
 
-void    ft_stock_color(t_mlx *mlx, char *str, int col, int lin);
+double  ft_percent(int start, int end, int current);
+double  get_percent(t_pt start, t_pt end, t_pt current);
+int     get_light(int start, int end, double percentage);
+int     get_color(t_pt current, t_pt start, t_pt end);
 
 
 /*

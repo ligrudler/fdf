@@ -42,6 +42,8 @@ void		create_double_tab(t_mlx *mlx)
 			ft_error();
 }
 
+#include <stdio.h>
+
 void		stock_in_tab(char *str, t_mlx *mlx)
 {
 	int col;
@@ -64,9 +66,9 @@ void		stock_in_tab(char *str, t_mlx *mlx)
 				ft_error();
 			mlx->map[lin][col].z = ft_atoi(split[i]);
 			if (ft_strchr(split[i], ','))
-				ft_stock_color(mlx, ft_strchr(split[i], ',') + 1, col, lin);
+				mlx->map[lin][col].color = ft_htoi(ft_strchr(split[i], ',') + 1);
 			else
-				mlx->map[lin][col].color = mlx->color;
+				mlx->map[lin][col].color = ft_htoi(mlx->color);
 			col++;
 			i++;
 		}

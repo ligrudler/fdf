@@ -15,14 +15,25 @@
 
 # include "fdf.h"
 
+typedef struct	s_pt
+{
+	int			x;
+	int			y;
+	int			color;
+}				t_pt;
+
 typedef struct	s_bress
 {
 	int			err;
-	int			x1;
-	int			x2;
-	int			y1;
-	int			y2;
-	int 		color;
+	int			color;
+	t_pt		p1;
+	t_pt		p2;
+	t_pt		cur;
+	int dx;
+	int dy;
+	int sx;
+	int sy;
+	int e2;
 }				t_bress;
 
 typedef	struct s_map
@@ -53,7 +64,7 @@ typedef struct	s_mlx
 	t_bress		bres;
 	double		alt;
 // Autre
-	int			color;
+	char		*color;
 	int			keyboard[256];
 	int		iso;
 
