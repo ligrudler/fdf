@@ -6,12 +6,11 @@
 /*   By: lgrudler <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 17:18:19 by lgrudler          #+#    #+#             */
-/*   Updated: 2019/03/04 12:00:01 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:21:01 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 static int		ft_count_words(char const *s, char c)
 {

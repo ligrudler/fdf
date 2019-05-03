@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proto.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 15:33:29 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/04/26 15:33:30 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:11:12 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 # define PROTO_H
 
 # include "fdf.h"
+
 /*
 **  Init
 */
 
-void    init_img(t_mlx *mlx);
+void	init_img(t_mlx *mlx);
 void	init_var(t_mlx *mlx);
 void	init_bres(t_mlx *mlx);
 void	find_scale(t_mlx *mlx);
 
 /*
-**
+**  Offset
 */
 
 void	find_offset(t_mlx *mlx);
@@ -39,14 +40,14 @@ void	print_grid_iso(t_mlx *mlx);
 void	print_grid_para(t_mlx *mlx);
 void	print_grid(t_mlx *mlx);
 void	put_pixel(t_mlx *mlx);
-
+void	give_value(t_mlx *mlx, int x, int y);
 
 /*
 **  Key handler
 */
 
-int key_press(int key, void *param);
-int key_release(int key, void *param);
+int		key_press(int key, void *param);
+int		key_release(int key, void *param);
 
 /*
 **  Parsing
@@ -68,18 +69,17 @@ int		ft_bresenham(t_mlx *mlx);
 ** Color
 */
 
-double  ft_percent(int start, int end, int current);
-double  get_percent(t_pt start, t_pt end, t_pt current);
-int     get_light(int start, int end, double percentage);
-int     get_color(t_pt current, t_pt start, t_pt end);
-
+double	ft_percent(int start, int end, int current);
+double	get_percent(t_pt start, t_pt end, t_pt current);
+int		get_light(int start, int end, double percentage);
+int		get_co(t_pt current, t_pt start, t_pt end);
 
 /*
 ** Free
 */
 
-void    ft_free_split(char **split);
-void    ft_free_map(t_mlx *mlx);
+void	ft_free_split(char **split);
+void	ft_free_map(t_mlx *mlx);
 
 /*
 **  Misc

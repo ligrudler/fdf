@@ -6,7 +6,7 @@
 /*   By: lgrudler <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 21:25:34 by lgrudler          #+#    #+#             */
-/*   Updated: 2019/03/11 16:38:31 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:28:58 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <fcntl.h>
 
 # define BUFF_SIZE 10
@@ -108,6 +107,5 @@ long int			ft_atol(const char *str);
 int					ft_abs(int nb);
 void				ft_error();
 int					ft_htoi(char *hex);
-
 
 #endif

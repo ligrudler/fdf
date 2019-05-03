@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 15:43:25 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/04/26 15:43:27 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:18:56 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,37 @@ typedef struct	s_bress
 	t_pt		p1;
 	t_pt		p2;
 	t_pt		cur;
-	int dx;
-	int dy;
-	int sx;
-	int sy;
-	int e2;
+	int			dx;
+	int			dy;
+	int			sx;
+	int			sy;
+	int			e2;
 }				t_bress;
 
-typedef	struct s_map
+typedef struct	s_pars
 {
-	int		z;
-	int		color;
+	int			col;
+	int			lin;
+	int			i;
+	char		**split;
+	t_car		car;
+}				t_pars;
+
+typedef	struct	s_map
+{
+	int			z;
+	int			color;
 }				t_map;
 
 typedef struct	s_mlx
 {
-// Pour le parsing
-	int nblin;
-	int nbcol;
+	int			nblin;
+	int			nbcol;
 	t_map		**map;
-// Pour la mlx
+
 	void		*mlx_ptr;
 	void		*win_ptr;
-// Pour l'image
+
 	void		*img;
 	char		*canvas;
 	int			bpp;
@@ -60,13 +68,13 @@ typedef struct	s_mlx
 	int			scale;
 	int			xoff;
 	int			yoff;
-// Pour Bresenham
+
 	t_bress		bres;
 	double		alt;
-// Autre
+
 	char		*color;
-	int			keyboard[256];
-	int		iso;
+	int			keyboard[512];
+	int			iso;
 
 }				t_mlx;
 

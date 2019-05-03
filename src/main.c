@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/03 14:32:29 by lgrudler          #+#    #+#             */
+/*   Updated: 2019/05/03 14:33:02 by lgrudler         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../hdr/fdf.h"
 
 void	print_tab(t_mlx *mlx)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	j = 0;
 	while (j < mlx->nblin)
@@ -22,8 +34,8 @@ void	print_tab(t_mlx *mlx)
 
 int		main(int argc, char **argv)
 {
-	int fd;
-	t_mlx mlx;
+	int		fd;
+	t_mlx	mlx;
 
 	init_var(&mlx);
 	if (argc != 2)

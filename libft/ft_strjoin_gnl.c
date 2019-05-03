@@ -6,7 +6,7 @@
 /*   By: lgrudler <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 14:52:53 by lgrudler          #+#    #+#             */
-/*   Updated: 2019/03/02 14:56:04 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:21:20 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strjoin_gnl(char const *s1, char const *s2)
 {
-	char *str;
+	char		*str;
 	const int	l1 = (s1) ? ft_strlen(s1) : 0;
 	const int	l2 = (s2) ? ft_strlen(s2) : 0;
 
