@@ -6,7 +6,7 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 13:55:43 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/05/03 14:30:18 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/05/03 16:22:47 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_var(t_mlx *mlx)
 	mlx->xoff = 0;
 	mlx->yoff = 0;
 	mlx->scale = 10;
+	mlx->off = 0;
 }
 
 void	init_bres(t_mlx *mlx)

@@ -6,7 +6,7 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 15:43:25 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/05/03 15:18:56 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/05/03 16:09:40 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct	s_mlx
 	char		*color;
 	int			keyboard[512];
 	int			iso;
+	int			off;
 
 }				t_mlx;
 
