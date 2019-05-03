@@ -6,7 +6,7 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 13:56:41 by lgrudler          #+#    #+#             */
-/*   Updated: 2019/05/03 16:19:41 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/05/03 17:05:12 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,22 @@ void	init_key(t_mlx *pmlx)
 	}
 }
 
+void	print_legend(t_mlx *pmlx)
+{
+	mlx_string_put(pmlx->mlx_ptr, pmlx->win_ptr, 50, 50, 0x2821DD,
+		"ALTITUDE : + / -");
+	mlx_string_put(pmlx->mlx_ptr, pmlx->win_ptr, 50, 100, 0x2821DD,
+		"ZOOM : haut / bas");
+	mlx_string_put(pmlx->mlx_ptr, pmlx->win_ptr, 50, 150, 0x2821DD,
+		"POSITION : w / s / a / d");
+	mlx_string_put(pmlx->mlx_ptr, pmlx->win_ptr, 50, 200, 0x2821DD,
+		"PROJECTION : P");
+	mlx_string_put(pmlx->mlx_ptr, pmlx->win_ptr, 50, 250, 0x2821DD,
+		"RECOMMENCER : spacebar");
+	mlx_string_put(pmlx->mlx_ptr, pmlx->win_ptr, 50, 300, 0x2821DD,
+		"QUITTER : echap");
+}
+
 int		deal_key(void *param)
 {
 	t_mlx	*pmlx;
@@ -55,6 +71,7 @@ int		deal_key(void *param)
 	ft_bzero(pmlx->canvas, 4 * WINX * WINY);
 	print_grid(pmlx);
 	mlx_put_image_to_window(pmlx->mlx_ptr, pmlx->win_ptr, pmlx->img, 0, 0);
+	print_legend(pmlx);
 	return (0);
 }
 
