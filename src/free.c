@@ -37,3 +37,15 @@ void	ft_free_split(char **split)
 	}
 	free(split);
 }
+
+void	ft_error_split(char **split)
+{
+	ft_free_split(split);
+	ft_error();
+}
+
+void	ft_free_str(char *str)
+{
+	free(str);
+	ft_error();
+}

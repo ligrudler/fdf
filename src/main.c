@@ -44,7 +44,7 @@ int		main(int argc, char **argv)
 		return (-1);
 	}
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		return (-1);
+		ft_error();
 	ft_parsing(fd, &mlx);
 	print_tab(&mlx);
 	find_scale(&mlx);

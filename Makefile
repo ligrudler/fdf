@@ -53,7 +53,7 @@ LIB= -L /usr/local/lib -lmlx\
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) Makefile
 	@ echo "$(BLUE)Creating libft$(WHITE)"
 	@ make -C libft
 	@ echo "$(GREEN)Libft created$(WHITE)"

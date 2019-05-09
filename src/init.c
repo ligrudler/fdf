@@ -52,12 +52,21 @@ void	init_bres(t_mlx *mlx)
 void	init_img(t_mlx *mlx)
 {
 	if ((mlx->mlx_ptr = mlx_init()) == NULL)
+	{
+		ft_free_map(mlx);
 		ft_error();
+	}
 	if ((mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WINX, WINY, "FDF"))
 		== NULL)
+	{
+		ft_free_map(mlx);
 		ft_error();
+	}
 	if ((mlx->img = mlx_new_image(mlx->mlx_ptr, WINX, WINY)) == NULL)
+	{
+		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 		ft_error();
+	}
 	mlx->canvas = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->size_line,
 		&mlx->endian);
 }

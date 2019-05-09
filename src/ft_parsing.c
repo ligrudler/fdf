@@ -36,21 +36,27 @@ void		check_col_lin(t_mlx *mlx, char *str)
 			i++;
 		}
 		if ((mlx->nbcol != col) && (mlx->nblin != 0))
-			ft_error();
+			ft_free_str(str);
 		mlx->nblin++;
 	}
 }
 
-void		create_double_tab(t_mlx *mlx)
+void		create_double_tab(t_mlx *mlx, char *str)
 {
 	int		i;
 
 	if (!(mlx->map = (t_map**)malloc(sizeof(t_map*) * mlx->nblin)))
-		ft_error();
+		ft_free_str(str);
 	i = 0;
 	while (i < mlx->nblin)
 		if (!(mlx->map[i++] = (t_map*)malloc(sizeof(t_map) * mlx->nbcol)))
+		{
+			free(str);
+			while (i-- >= 0)
+				free(mlx->map[i]);
+			free(mlx->map);
 			ft_error();
+		}
 }
 
 void		stock_in_tab(char *str, t_mlx *mlx)
@@ -67,7 +73,7 @@ void		stock_in_tab(char *str, t_mlx *mlx)
 		while (p.split[p.i] && (p.col < mlx->nbcol))
 		{
 			if (ft_atol(p.split[p.i]) != ft_atoi(p.split[p.i]))
-				ft_error();
+				ft_error_split(p.split);
 			mlx->map[p.lin][p.col].z = ft_atoi(p.split[p.i]);
 			if (ft_strchr(p.split[p.i], ','))
 				mlx->map[p.lin][p.col].color = ft_htoi(ft_strchr(
@@ -101,12 +107,12 @@ void		ft_parsing(int fd, t_mlx *mlx)
 		while (str[++i])
 			if (ft_isalnum(str[i]) != 1 && str[i] != ' ' && str[i] != '\n'
 					&& str[i] != '-' && str[i] != ',' && str[i] != '+')
-				ft_error();
+				ft_free_str(str);
 	}
 	if (ret <= -1 || str == NULL)
-		ft_error();
+		ft_free_str(str);
 	check_col_lin(mlx, str);
-	create_double_tab(mlx);
+	create_double_tab(mlx, str);
 	stock_in_tab(str, mlx);
 	free(str);
 }

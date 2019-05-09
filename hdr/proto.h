@@ -55,7 +55,7 @@ int		key_release(int key, void *param);
 
 void	ft_parsing(int fd, t_mlx *mlx);
 void	check_col_lin(t_mlx *mlx, char *str);
-void	create_double_tab(t_mlx *mlx);
+void	create_double_tab(t_mlx *mlx, char *str);
 void	stock_in_tab(char *str, t_mlx *mlx);
 
 /*
@@ -79,6 +79,8 @@ int		get_co(t_pt current, t_pt start, t_pt end);
 */
 
 void	ft_free_split(char **split);
+void	ft_error_split(char **split);
+void	ft_free_str(char *str);
 void	ft_free_map(t_mlx *mlx);
 
 /*

@@ -17,6 +17,9 @@ int	is_inside_win(t_mlx mlx)
 	if (mlx.bres.cur.x <= 0 || mlx.bres.cur.x >= WINX
 		|| mlx.bres.cur.y <= 0 || mlx.bres.cur.y >= WINY)
 		return (0);
+	else if ((mlx.bres.cur.x <= 300 && mlx.bres.cur.x >= 40)
+		&& (mlx.bres.cur.y <= 340 && mlx.bres.cur.y >= 40))
+		return (0);
 	return (1);
 }
 
